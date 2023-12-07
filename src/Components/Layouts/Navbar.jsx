@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BasketContext } from "../../Context/BasketContext";
 
 function Navbar() {
   const handleWishlist =()=>{
@@ -8,7 +9,10 @@ function Navbar() {
 const handleBasket =()=>{
   document.querySelector(".aside-basket").classList.toggle("active")
 
+  
+
 }
+const {basket} = useContext(BasketContext)
   return (
     <header>
       <nav>
@@ -26,7 +30,7 @@ const handleBasket =()=>{
         <div className="icons">
 
         <i class="fa-solid fa-magnifying-glass"></i>
-        <i onClick={handleBasket} class="fa-solid fa-basket-shopping"></i>
+        <i onClick={handleBasket} class="fa-solid fa-basket-shopping"><sup>{basket.length}</sup></i>
         <i class="fa-solid fa-user"></i>
         <i onClick={handleWishlist} class="fa-solid fa-heart"></i>
         </div>
