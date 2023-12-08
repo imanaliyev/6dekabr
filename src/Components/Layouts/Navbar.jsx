@@ -1,13 +1,17 @@
 import React, { useContext } from "react";
 import { BasketContext } from "../../Context/BasketContext";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const handleWishlist =()=>{
     document.querySelector(".aside-wishlist").classList.toggle("active")
+    document.querySelector(".close").classList.toggle("active2")
 
 }
 const handleBasket =()=>{
   document.querySelector(".aside-basket").classList.toggle("active")
+  document.querySelector(".close").classList.toggle("active2")
+  document.querySelector(".total-price").classList.toggle("active2")
 
   
 
@@ -17,10 +21,10 @@ const {basket} = useContext(BasketContext)
     <header>
       <nav>
         <div className="logo">
-            <img src="https://preview.colorlib.com/theme/eiser/img/logo.png.webp" alt="" />
+          <Link to={'/'}>  <img src="https://preview.colorlib.com/theme/eiser/img/logo.png.webp" alt="" /></Link>
         </div>
         <ul className="links">
-          <li>HOME</li>
+          <Link to={"/"}><li>HOME</li></Link>
           <li>SHOP</li>
           <li>BLOG</li>
           <li>PAGES</li>

@@ -1,22 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import BasketProvider from './Context/BasketContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import BasketProvider from "./Context/BasketContext";
+import WishListProvider from "./Context/WishListContext";
 
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BasketProvider>
-    <App />
-
-    </BasketProvider>
-
+    <WishListProvider>
     
+      <BasketProvider>
+        <App />
+      </BasketProvider>
+      </WishListProvider>
     
   </React.StrictMode>
 );
-
-
-

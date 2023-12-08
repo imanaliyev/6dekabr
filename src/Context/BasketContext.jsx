@@ -5,35 +5,31 @@ import 'react-toastify/dist/ReactToastify.css';
 export const BasketContext = createContext();
 function BasketProvider({children}) {
     const [basket, setBasket] = useLocalStorage("basket",[])
+    const [totalPrice, setTotalPrice] = useState(0);
 
 
     function addBasket(item) {
         const index = basket.findIndex((x) => x.id === item.id);
+        setTotalPrice(totalPrice + item.price);
         if (index === -1) {
             setBasket([...basket,{...item,count:1}]);
 
-            
-        }else{
-          
-            alert("Item has already added to basket!")
-           
-     
             
         }
 
       
         
     }
+    
+   
     const increase=(item)=>{
-        const price = item.price
-        
-        item.price = item.price + price
-        console.log(price);
         const index = basket.findIndex((x) => x.id === item.id);
         basket[index].count++
         setBasket([...basket])
+       
     }
     const decrease=(item)=>{
+
         
         const index = basket.findIndex((x) => x.id === item.id);
         if (basket[index].count === 1) {
@@ -43,9 +39,14 @@ function BasketProvider({children}) {
         setBasket([...basket])
 
     }
+    const removeItem=(item)=>{
+        setBasket(basket.filter(x=> x.id !== item.id))
+        setTotalPrice(totalPrice - item.price);
+
+    }
 
     const data ={
-        addBasket,basket,increase,decrease
+        addBasket,basket,increase,decrease,removeItem,totalPrice
 
     }
    

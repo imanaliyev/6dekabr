@@ -26,8 +26,13 @@ header{
             align-items: center;
             justify-content: space-between;
             width: 600px;
+            a{
+                color: black;
+                text-decoration: none;
+            }
             li{
                 cursor: pointer;
+                
               
             }
         }
@@ -58,6 +63,26 @@ section{
     grid-template-columns: auto auto auto auto;
     padding-top: 50px   ;
     position: relative;
+    .fa-spinner{
+        font-size: 100px;
+        animation: mymove 1.5s infinite;
+        position: absolute;
+        margin-top: 1000px;
+    }
+    @keyframes mymove {
+        100% {transform: rotate(180deg);}
+      }
+    .close{
+    width: 99vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(128, 128, 128, 0.466);
+    z-index: 1;
+    display: none;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    }
     .aside-wishlist{
        
        
@@ -66,7 +91,7 @@ section{
         position: fixed;
         top: 0;
         right: 0;
-        z-index: 1;
+        z-index: 12;
         overflow: hidden;
        
         i{
@@ -78,17 +103,36 @@ section{
             cursor: pointer;
         }
     }
+    .total-price{
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        display: none;
+        padding: 10px;
+        width: 600px;
+     
+        font-size: 22px;
+        z-index: 20;
+        color: black;
+        background-color: rgb(131, 185, 49);
+    }
     .aside-basket{
         height: 100vh;
         background-color: rgb(68, 68, 68);
+        display: none;
         position: fixed;
         top: 0;
         width: 0;
         right: 0;
-        z-index: 1;
+        z-index: 12;
         overflow: scroll;
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
+        
+       
+        .remove{
+            width: 60px;
+        }
         
         ul{
             
@@ -105,8 +149,9 @@ section{
           
             div{
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 gap: 5px;
+               
                 button{
                   
                     width: 15px;
@@ -117,6 +162,7 @@ section{
                     justify-content: center;
                     border-radius: 3px;
                     cursor: pointer;
+                   
                     &:hover{
                         scale: 1.1;
                         background-color: rgb(216, 216, 216);
@@ -158,6 +204,7 @@ section{
         width: 400px;
         height: 450px;
         position: relative;
+        border-radius: 10px;
         &:hover > .buttons {
             height: 60px;
         }
@@ -173,6 +220,9 @@ section{
           
             height: 0;
             overflow: hidden;
+            a{
+                color: black;
+            }
            
             button{
                 width: 40px;
@@ -200,8 +250,48 @@ section{
     padding: 20px;
    
 }
+.active2{
+    display: block !important;
+}
 
 
-@media screen and (min-width: 480px){
+@media screen and (max-width: 1202px){
+    section{
+        grid-template-columns: auto auto auto
+    }
 
 }
+@media screen and (max-width: 702px){
+    section{
+        grid-template-columns: auto auto 
+    }
+
+}
+
+  
+    .container{
+    
+        padding: 100px;
+        width: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+       
+        .info{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            span{
+                font-weight: bold;
+                margin-right: 10px;
+                font-size: 18px;
+            }
+        }
+        img{
+            width: 500px;
+            height: 500px;
+           
+        }
+    }
+
